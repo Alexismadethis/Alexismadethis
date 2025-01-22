@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" type="image/png" href="icon/favicon.png">
+</head>
+
+<body>
+<header>
+    <a href="index.html">
+        <img src="icon/logo.png" alt="logo" class="logo" height="80">
+      </a>
+
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About Me</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+    </nav>
+    <a class="contact" href="contact.html"><button>Contact</button></a>
+</header>
+
+<br><br> <br><br> <br> <br><br> 
+<div class="contact-box">
+<main > 
+  <br> <br>  
+    <h1>Let’s Connect!</h1>
+  <br> <br>
+
+    <p>Feel free to reach out with any questions or opportunities!</p>
+    <p>I'm always open to new opportunities and collaborations. Don't hesitate to reach out!</p>
+
+                      <!------------------------------------resume-------------------------------------------------------->
+  <div class="contact-buttons">
+                      <br><br> <br>
+  <a href="resume.pdf" download="Lisa_Resume.pdf" class="download-btn">Download My Resume</a>
+</section>
+
+<!-- Email Button -->
+<a href="mailto:alexismadethis@outlook.com" class="email-btn">
+  <button>Email Me</button>
+</a>
+
+<a href="https://www.linkedin.com/in/a-sloan/" target="_blank" class="linkedin-btn">
+  <button>LinkedIn</button>
+</a>
+  
+    <br> <br>  <br> <br> 
+</main>
+</div>
+</div>
+<br><br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
+
+<footer class="footer">
+    
+   
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+<br>
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="About.html">About Me</a></li>
+    <li><a href="projects.html">Projects</a></li>
+  </ul>
+</nav>
+<br>
+<p>© <span id="year"></span> Alexis. All Rights Reserved.</p>
+<!-- Back to Top Button -->
+<button id="backToTopBtn" onclick="scrollToTop()">Back to Top</button>
+
+<script>
+// Function to scroll back to top
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // Smooth scrolling effect
+  });
+}
+
+// Show the "Back to Top" button when the user scrolls near the bottom
+window.onscroll = function() {
+  let scrollPosition = window.scrollY; // Current scroll position
+  let windowHeight = window.innerHeight; // Height of the viewport
+  let documentHeight = document.documentElement.scrollHeight; // Total height of the document
+
+  // Check if the user is at the bottom of the page
+  if (scrollPosition + windowHeight >= documentHeight - 10) { // 10px buffer from the bottom
+    document.getElementById("backToTopBtn").style.display = "block";
+  } else {
+    document.getElementById("backToTopBtn").style.display = "none";
+  }
+};
+
+</script>
+</footer>
+
+</body>
+</html>    

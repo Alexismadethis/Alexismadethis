@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" type="image/png" href="icon/favicon.png">
+</head>
+
+<body>
+<header>
+
+ 
+  <a href="index.html">
+    <img src="icon/logo.png" alt="logo" class="logo" height="80">
+  </a>
+
+
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About Me</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+    </nav>
+    <a class="contact" href="contact.html"><button>Contact</button></a>
+
+</header>
+
+<main > 
+  <br> 
+  
+  <section id="about-me">
+    
+    <div class="content-box">
+      <h1>About Me</h1>
+      <br><br>
+      <p>
+        Hey there! I’m an IT enthusiast with a BBA in Management Information Systems (MIS) 
+        from Temple University. I love finding creative ways to solve problems and make technology 
+        work better for people. My expertise spans IT support, cloud services, troubleshooting, and 
+        making sure technology is simple and accessible for everyone.
+      </p>
+      <br>
+      <p>
+        In my most recent role at a software company, I worked on managing desktop infrastructure, 
+        troubleshooting hardware and software issues, and supporting cloud services like M365. I also 
+        helped streamline user account management, permissions, and created smooth onboarding programs 
+        so new hires could get started without a hitch.
+      </p>
+      <br>
+      <p>
+        You’re currently checking out a website I built myself, using HTML, CSS, and JavaScript. 
+        It’s a small showcase of my hands-on approach to tech and web development!
+      </p>
+      <br>
+      <p>
+        When I’m not busy with tech stuff, you’ll find me working on craft projects or teaching people 
+        how to feel more comfortable using technology. I love helping people, especially those not as 
+        familiar with computers, learn how to use digital tools—and I’m always excited to show them 
+        how AI can make everyday tasks a little easier.
+      </p>
+      <br>
+      <p>
+        I’m passionate about making tech accessible, helping both individuals and businesses use it to 
+        make life a bit smoother!
+      </p>
+  <br>
+  <br>
+  
+  
+  <h2>Skills</h2>
+  <br><br>
+  <br><br>
+
+      <!-- Skills Section Icons -->
+      <div class="skills-icons">
+        <div class="skill-item">
+          <img src="icon/azure.png" alt="azure" class="skillicon">
+          <span class="tooltip-text">Microsoft Azure Admin</span>
+        </div>
+        <div class="skill-item">
+          <img src="icon/admin365icon.png" alt="m365" class="skillicon">
+          <span class="tooltip-text">Microsoft 365 Admin</span>
+        </div>
+        <div class="skill-item">
+          <img src="icon/support.png" alt="it-support" class="skillicon">
+          <span class="tooltip-text">IT Support</span>
+        </div>
+        <div class="skill-item">
+          <img src="icon/frontend.png" alt="frontend" class="skillicon">
+          <span class="tooltip-text">Frontend Development</span>
+        </div>
+        <div class="skill-item">
+          <img src="icon/ad.png" alt="ad" class="skillicon">
+          <span class="tooltip-text">Active Directory</span>
+        </div>
+        <div class="skill-item">
+          <img src="icon/Slack-logo.png" alt="slack" class="skillicon">
+          <span class="tooltip-text">Slack Admin</span>
+        </div>
+        <div class="skill-item">
+          <img src="icon/adobeadmin.png" alt="adobe" class="skillicon">
+          <span class="tooltip-text">Adobe Admin</span>
+        </div>
+        <div class="skill-item">
+          <img src="icon/wordpress.png" alt="wordpress" class="skillicon">
+          <span class="tooltip-text">WordPress</span>
+        
+        </div>
+      </div>
+    </div>
+    <br><br>
+  </section>
+  <br><br>
+</main>
+
+<br><br> <br><br> <br> <br><br><br>
+<!---------------------------------Bottom Nav--------------------------------------------------------------> 
+<footer class="footer">
+    
+   
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+<br>
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="About.html">About Me</a></li>
+    <li><a href="projects.html">Projects</a></li>
+  </ul>
+</nav>
+<br>
+<p>© <span id="year"></span> Alexis. All Rights Reserved.</p>
+<!-- Back to Top Button -->
+<button id="backToTopBtn" onclick="scrollToTop()">Back to Top</button>
+<!------------------------------------------Java Script for back to to button---------------------------------------------------> 
+<script>
+// Function to scroll back to top
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // Smooth scrolling effect
+  });
+}
+
+// Show the "Back to Top" button when the user scrolls near the bottom
+window.onscroll = function() {
+  let scrollPosition = window.scrollY; // Current scroll position
+  let windowHeight = window.innerHeight; // Height of the viewport
+  let documentHeight = document.documentElement.scrollHeight; // Total height of the document
+
+  // Check if the user is at the bottom of the page
+  if (scrollPosition + windowHeight >= documentHeight - 10) { // 10px buffer from the bottom
+    document.getElementById("backToTopBtn").style.display = "block";
+  } else {
+    document.getElementById("backToTopBtn").style.display = "none";
+  }
+};
+/*-----------------------------------------------------------end---------------------------------------------------------*/
+</script>
+</footer>
+
+</body>
+</html>    

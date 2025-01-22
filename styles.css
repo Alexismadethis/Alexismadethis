@@ -1,0 +1,446 @@
+/*------------------------------- Global Styling --------------------------------*/
+/* Add custom font for the entire page */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+/* Reset margin, padding, and box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General text styling for list items, links, and buttons */
+li, a, button {
+    font-family: 'Caveat', cursive;
+    font-size: 35px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+/*------------------------------- Header & Navbar Styling -------------------------------*/
+/* Header container styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 1%; /* Moves the logo slightly to the left */
+    background-color: rgb(220, 238, 239);
+    box-shadow: 0 5px 4px 0 rgba(29, 31, 53, 0.2); /* Adds a shadow to the header */
+}
+
+/* Logo styling */
+.logo {
+    cursor: pointer;
+}
+
+/* Navbar list item styling */
+.navbar li, .navbarbottom li {
+    display: inline-block;
+    padding: 0 30px; /* Spacing between items */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Navbar links transition */
+.navbar a {
+    transition: all 0.3s ease;
+}
+
+/* Navbar links hover effect */
+.navbar a:hover {
+    color: #719494;
+}
+
+/* Footer-specific navbar styling */
+footer .navbar {
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/*------------------------------- Footer Styling -------------------------------*/
+/* Footer container styling */
+footer {
+    margin-top: auto;
+    background-color: rgb(220, 238, 239);
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Footer paragraph styling */
+footer p {
+    color: black; /* Text color */
+    font-size: 10px; /* Smaller font size */
+}
+
+/* Navbar items in the footer */
+footer .navbar li, footer .navbar a {
+    font-size: 1.5rem; /* Reduced font size */
+}
+
+/*------------------------------- Button Styling -------------------------------*/
+/* General button styling */
+button {
+    padding: 10px 20px;
+    background-color: #a7c3c3;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 14px 10px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #2b2f2f;
+    color: #c3dede;
+}
+
+/*------------------------------- Layout Styling -------------------------------*/
+/* Ensures footer stays at the bottom */
+html, main, body {
+    height: 100%; /* Full height */
+    margin: 0; /* Remove default margin */
+}
+
+/*------------------------------- Background Image Styling -------------------------------*/
+/* Background image for the body */
+body {
+    background-image: url('image/41999945994_0b52346a0c_o.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-size: 20px; /* Base font size */
+    color: #fff; /* Light text color */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/*------------------------------- Content Box Styling -------------------------------*/
+/* Styling for content sections */
+.content-box {
+    background-color: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    max-width: 800px;
+    max-height: 890px;
+    margin: 0px auto;
+    color: #333; /* Dark text for readability */
+}
+
+/* Content box paragraph styling */
+.content-box p {
+    line-height: 1.1;
+    font-size: 1.2rem; /* Better readability */
+}
+
+.content-box h1 {
+  font-family: 'Caveat', cursive;
+  font-size: 40px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+/*------------------------------- Contact Box Styling -------------------------------*/
+/* Styling for cootact sections */
+.contact-box {
+  background-color: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  max-width: 800px;
+  margin: 0px auto;
+  color: #333; /* Dark text for readability */
+}
+
+/* Content box paragraph styling */
+.contact-box p {
+  line-height: 1.6;
+  font-size: 1.2rem; /* Adjusted for readability */
+  text-align: center;
+  color: #444;
+}
+.contact-box h1 {
+  font-family: 'Caveat', cursive;
+  font-size: 40px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+/*------------------------------- main page Box Styling -------------------------------*/
+
+/* Welcome Box Styling */
+.welcome-box {
+  background-color: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+  padding: 30px; /* Increase padding for more space inside the box */
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+  max-width: 1000px; /* Increased width */
+  min-height: 400px; /* Increased height */
+  margin: 0px auto;
+  color: #333; /* Dark text for readability */
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Arrange content in a column */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  text-align: center; /* Center the text */
+}
+
+.welcome-box h2 {
+  font-family: 'Caveat', cursive;
+  font-size: 40px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  
+}
+
+.welcome-box p {
+  font-size: 22px;
+  line-height: 1.6;
+}
+
+
+
+/*------------------------------- Projects Box Styling -------------------------------*/
+.projects-box {
+  background-color: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  max-width: 900px; /* Increased width */
+  margin: 0px auto;
+  color: #333; /* Dark text for readability */
+}
+
+.projects-box h1 {
+  font-family: 'Caveat', cursive;
+  font-size: 40px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+.projects-box p {
+  line-height: 1.6;
+  font-size: 1.2rem; /* Adjusted for readability */
+  text-align: center;
+  color: #444;
+}
+
+
+
+
+/*------------------------------- Skills Section Styling -------------------------------*/
+/* Skills icons container */
+.skills-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between icons */
+    justify-content: center;
+    margin-top: -80px;
+    margin-bottom: -20px;
+}
+
+/* Individual skill item */
+.skill-item {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+
+/* General icon styling */
+.skillicon {
+    height: auto; /* Maintain aspect ratio */
+    transition: all 0.3s ease;
+    object-fit: contain; /* Ensure proper fit */
+    margin-right: 40px; /* Space between icons */
+    margin-bottom: 10px;
+}
+
+/* Tooltip text for icons */
+.tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #a7c3c3;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%; /* Positioned above the icon */
+    left: 50%;
+    margin-left: -60px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Tooltip visibility on hover */
+.skill-item:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*------------------------------- Individual Icon Sizing -------------------------------*/
+.skill-item:nth-child(1) .skillicon { width: 150px; }
+.skill-item:nth-child(2) .skillicon { width: 65px; }
+.skill-item:nth-child(3) .skillicon { width: 80px; }
+.skill-item:nth-child(4) .skillicon { width: 90px; }
+.skill-item:nth-child(5) .skillicon { width: 100px; }
+.skill-item:nth-child(6) .skillicon { width: 110px; }
+.skill-item:nth-child(7) .skillicon { width: 65px; }
+.skill-item:nth-child(8) .skillicon { width: 95px; }
+
+/*------------------------------- Resume Button Styling -------------------------------*/
+/* Resume download button */
+.download-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    font-family: 'Caveat', cursive;
+    font-size: 25px;
+    font-weight: 200;
+    color: rgb(0, 0, 0);
+    background-color: #a7c3c3;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.2);
+    text-decoration: none; /* Removes underline */
+}
+
+/* Resume button hover and active effects */
+.download-btn:hover {
+    background-color: #2b2f2f;
+    color: #c3dede;
+}
+.download-btn:active {
+    background-color: #004085; /* Darker color on click */
+    transform: translateY(0); /* Reset hover effect */
+}
+
+/* General email button styling */
+.email-btn button {
+  padding: 10px 20px;
+  background-color: #a7c3c3;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Caveat', cursive;
+  font-size: 25px;
+  font-weight: 200;
+  transition: all 0.3s ease;
+  box-shadow: 14px 10px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+/* Email button hover effect */
+.email-btn button:hover {
+  background-color: #2b2f2f;
+  color: #c3dede;
+}
+
+
+
+/* LinkedIn button styling */
+.linkedin-btn {
+  display: inline-block;
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.linkedin-btn button {
+ padding: 10px 20px;
+  background-color: #a7c3c3;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Caveat', cursive;
+  font-size: 25px;
+  font-weight: 200;
+  transition: all 0.3s ease;
+  box-shadow: 14px 10px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.linkedin-btn button:hover {
+   /* Darker LinkedIn blue */
+   background-color: #2b2f2f;
+   color: #c3dede;
+}
+
+
+
+/*------------------------------- Back to Top Button -------------------------------*/
+/* Back-to-top button */
+#backToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-family: 'Caveat', cursive;
+    font-size: 17px;
+    font-weight: 500;
+    background-color: #a7c3c3;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 14px 10px 10px rgba(0, 0, 0, 0.2);
+    display: none; /* Hidden initially */
+}
+
+/* Back-to-top hover effect */
+#backToTopBtn:hover {
+    background-color: #2b2f2f;
+    color: #c3dede;
+}
+
+/*------------------------------- Icon Slide-In Animation -------------------------------*/
+/* Slide-in animation for icons */
+.skillicon {
+    opacity: 0; /* Initially hidden */
+    transform: translateX(-100px); /* Start off-screen */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    animation: slideIn 1s ease-out forwards;
+}
+
+/* Slide-in animation keyframes */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Staggered animation delays */
+.skill-item:nth-child(1) .skillicon { animation-delay: 0.2s; }
+.skill-item:nth-child(2) .skillicon { animation-delay: 0.4s; }
+.skill-item:nth-child(3) .skillicon { animation-delay: 0.6s; }
+.skill-item:nth-child(4) .skillicon { animation-delay: 0.8s; }
+.skill-item:nth-child(5) .skillicon { animation-delay: 1s; }
+.skill-item:nth-child(6) .skillicon { animation-delay: 1.2s; }
+.skill-item:nth-child(7) .skillicon { animation-delay: 1.4s; }
+.skill-item:nth-child(8) .skillicon { animation-delay: 1.6s; }
+
+
+/*------------------------------- center button on contact page-------------------------------*/
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+
+
+
+.contact-buttons a button:hover {
+  opacity: 0.8;
+}
