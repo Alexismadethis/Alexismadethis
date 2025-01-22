@@ -24,7 +24,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 1%; /* Moves the logo slightly to the left */
+    padding: 2px 1%; /* Moves the logo slightly to the left */
     background-color: rgb(220, 238, 239);
     box-shadow: 0 5px 4px 0 rgba(29, 31, 53, 0.2); /* Adds a shadow to the header */
 }
@@ -233,37 +233,31 @@ body {
 
 
 /*------------------------------- Skills Section Styling -------------------------------*/
-@media (max-width: 768px) {
-  /* Adjust skills icons container */
-  .skills-icons {
-    flex-wrap: wrap; /* Ensure icons wrap to a new row */
-    gap: 20px; /* Add more spacing between icons */
+/* Skills icons container */
+.skills-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between icons */
     justify-content: center;
-    margin-top: 20px; /* Prevent overlap with other elements */
-    margin-bottom: 20px;
-  }
-
-  /* Ensure skill icons are properly sized on smaller screens */
-  .skillicon {
-    width: 50px; /* Adjust width to fit smaller screens */
-    margin-right: 10px; /* Reduce spacing */
-    margin-bottom: 10px; /* Add space below each icon */
-  }
-
-  /* Ensure content-box adjusts for smaller screens */
-  .content-box {
-    padding: 20px; /* Maintain padding for readability */
-    max-width: 90%; /* Adjust width to fit screen */
-    margin: 20px auto; /* Add margin to avoid crowding */
-  }
-
-  /* Adjust skill-item container for better spacing */
-  .skill-item {
-    text-align: center; /* Ensure icons and tooltips align */
-    margin: 10px 0; /* Add vertical spacing */
-  }
+    margin-top: -80px;
+    margin-bottom: -20px;
 }
 
+/* Individual skill item */
+.skill-item {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+
+/* General icon styling */
+.skillicon {
+    height: auto; /* Maintain aspect ratio */
+    transition: all 0.3s ease;
+    object-fit: contain; /* Ensure proper fit */
+    margin-right: 40px; /* Space between icons */
+    margin-bottom: 10px;
+}
 
 /* Tooltip text for icons */
 .tooltip-text {
