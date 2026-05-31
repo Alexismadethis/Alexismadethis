@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Alexis Sloan</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="icon/favicon.png">
+</head>
+<body>
+
+<div id="desktop" class="no-boot">
+
+  <div class="desktop-icons">
+    <a href="index.html" class="d-icon" title="Home">
+      <div class="d-icon-emoji">&#127968;</div>
+      <span>My Portfolio</span>
+    </a>
+    <a href="About.html" class="d-icon" title="About Me">
+      <div class="d-icon-emoji">&#128100;</div>
+      <span>About Me</span>
+    </a>
+    <a href="projects.html" class="d-icon" title="Projects">
+      <div class="d-icon-emoji">&#128193;</div>
+      <span>My Projects</span>
+    </a>
+    <a href="contact.html" class="d-icon active-icon" title="Contact">
+      <div class="d-icon-emoji">&#9993;</div>
+      <span>Contact</span>
+    </a>
+    <a href="resume.pdf" download="Alexis_Resume.pdf" class="d-icon" title="Resume">
+      <div class="d-icon-emoji">&#128196;</div>
+      <span>Resume.pdf</span>
+    </a>
+  </div>
+
+  <div class="win-window" id="main-window">
+    <div class="win-titlebar">
+      <div class="win-titlebar-left">
+        <span class="win-titlebar-icon">&#9993;</span>
+        Contact — Alexis Sloan
+      </div>
+      <div class="win-controls">
+        <button class="win-ctrl-btn" title="Minimize" onclick="minimizeWindow()">&#8722;</button>
+        <button class="win-ctrl-btn" title="Maximize">&#9633;</button>
+        <a href="index.html"><button class="win-ctrl-btn win-ctrl-close" title="Close">&#10005;</button></a>
+      </div>
+    </div>
+    <div class="win-menubar">
+      <span class="win-menu-item">File</span>
+      <span class="win-menu-item">Edit</span>
+      <span class="win-menu-item">View</span>
+      <span class="win-menu-item">Favorites</span>
+      <span class="win-menu-item">Help</span>
+    </div>
+    <div class="win-toolbar">
+      <button class="toolbar-btn" onclick="history.back()">&#9664;&#9664; Back</button>
+      <button class="toolbar-btn" disabled>Forward &#9654;&#9654;</button>
+      <button class="toolbar-btn" onclick="location.reload()">&#8635; Refresh</button>
+      <div class="toolbar-address">
+        <span class="toolbar-address-label">Address</span>
+        <span class="toolbar-address-bar">C:\Users\Alexis\Portfolio\contact.html</span>
+      </div>
+    </div>
+
+    <div class="win-body">
+      <div class="win-welcome-banner">
+        &#9993; Let's Connect!
+      </div>
+
+      <div class="win-inset" style="margin-bottom:16px; text-align:center">
+        <h1 class="win-h1">Get In Touch</h1>
+        <p>Feel free to reach out with any questions or opportunities! I'm always open to new collaborations. Don't hesitate to reach out!</p>
+      </div>
+
+      <!-- Contact options as dialog boxes -->
+      <div class="win-contact-grid">
+
+        <div class="win-dialog-box">
+          <div class="win-dialog-titlebar">&#128140; Email Me</div>
+          <div class="win-dialog-body">
+            <p>alexismadethis@outlook.com</p>
+            <a href="mailto:alexismadethis@outlook.com" class="win-btn" style="margin-top:10px; display:inline-block">Open Email</a>
+          </div>
+        </div>
+
+        <div class="win-dialog-box">
+          <div class="win-dialog-titlebar">&#128279; LinkedIn</div>
+          <div class="win-dialog-body">
+            <p>linkedin.com/in/a-sloan/</p>
+            <a href="https://www.linkedin.com/in/a-sloan/" target="_blank" class="win-btn" style="margin-top:10px; display:inline-block">View Profile</a>
+          </div>
+        </div>
+
+        <div class="win-dialog-box">
+          <div class="win-dialog-titlebar">&#128196; Resume</div>
+          <div class="win-dialog-body">
+            <p>Download my full resume as a PDF.</p>
+            <a href="resume.pdf" download="Alexis_Resume.pdf" class="win-btn" style="margin-top:10px; display:inline-block">&#128229; Download</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Fun Win98-style dialog -->
+      <div class="win-alert-box">
+        <div class="win-alert-icon">&#128161;</div>
+        <div class="win-alert-text">
+          <strong>Ready to work together?</strong><br>
+          I'm passionate about making tech accessible and helping teams work smarter. Let's talk!
+        </div>
+      </div>
+
+    </div>
+
+    <div class="win-statusbar">
+      <span class="win-status-panel">Ready</span>
+      <span class="win-status-panel">&#127968; alexissloan.com</span>
+      <span class="win-status-panel" id="win-clock">12:00 PM</span>
+    </div>
+  </div>
+
+  <div class="taskbar-float" id="taskbar-float" style="display:none">
+    <button class="taskbar-restore-btn" onclick="restoreWindow()">&#9993; Contact</button>
+  </div>
+
+  <div class="taskbar">
+    <button class="start-btn" id="start-btn" onclick="toggleStartMenu()">
+      <div class="start-flag">
+        <div class="flag-red"></div><div class="flag-green"></div>
+        <div class="flag-blue"></div><div class="flag-yellow"></div>
+      </div>
+      <strong>Start</strong>
+    </button>
+    <div class="taskbar-windows">
+      <button class="taskbar-win-btn active-taskbar" onclick="restoreWindow()">&#9993; Contact</button>
+    </div>
+    <div class="taskbar-tray">
+      <span>&#128266;</span>
+      <span id="taskbar-clock">12:00 PM</span>
+    </div>
+  </div>
+
+  <div class="start-menu hidden" id="start-menu">
+    <div class="start-menu-sidebar"><span class="start-sidebar-text">Windows 98</span></div>
+    <div class="start-menu-items">
+      <a href="index.html" class="start-item">&#128100;&nbsp; My Portfolio</a>
+      <a href="About.html" class="start-item">&#128100;&nbsp; About Me</a>
+      <a href="projects.html" class="start-item">&#128193;&nbsp; My Projects</a>
+      <a href="contact.html" class="start-item">&#9993;&nbsp; Contact</a>
+      <div class="start-divider"></div>
+      <a href="resume.pdf" download="Alexis_Resume.pdf" class="start-item">&#128196;&nbsp; Download Resume</a>
+      <div class="start-divider"></div>
+      <a href="https://www.linkedin.com/in/a-sloan/" target="_blank" class="start-item">&#128279;&nbsp; LinkedIn</a>
+    </div>
+  </div>
+
+</div>
+
+<script src="win98.js"></script>
+</body>
+</html>

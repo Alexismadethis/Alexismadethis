@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Alexis Sloan</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="icon/favicon.png">
+</head>
+<body>
+
+<div id="desktop" class="no-boot">
+
+  <div class="desktop-icons">
+    <a href="index.html" class="d-icon" title="Home">
+      <div class="d-icon-emoji">&#127968;</div>
+      <span>My Portfolio</span>
+    </a>
+    <a href="About.html" class="d-icon" title="About Me">
+      <div class="d-icon-emoji">&#128100;</div>
+      <span>About Me</span>
+    </a>
+    <a href="projects.html" class="d-icon active-icon" title="Projects">
+      <div class="d-icon-emoji">&#128193;</div>
+      <span>My Projects</span>
+    </a>
+    <a href="contact.html" class="d-icon" title="Contact">
+      <div class="d-icon-emoji">&#9993;</div>
+      <span>Contact</span>
+    </a>
+    <a href="resume.pdf" download="Alexis_Resume.pdf" class="d-icon" title="Resume">
+      <div class="d-icon-emoji">&#128196;</div>
+      <span>Resume.pdf</span>
+    </a>
+  </div>
+
+  <div class="win-window" id="main-window">
+    <div class="win-titlebar">
+      <div class="win-titlebar-left">
+        <span class="win-titlebar-icon">&#128193;</span>
+        My Projects — Alexis Sloan
+      </div>
+      <div class="win-controls">
+        <button class="win-ctrl-btn" title="Minimize" onclick="minimizeWindow()">&#8722;</button>
+        <button class="win-ctrl-btn" title="Maximize">&#9633;</button>
+        <a href="index.html"><button class="win-ctrl-btn win-ctrl-close" title="Close">&#10005;</button></a>
+      </div>
+    </div>
+    <div class="win-menubar">
+      <span class="win-menu-item">File</span>
+      <span class="win-menu-item">Edit</span>
+      <span class="win-menu-item">View</span>
+      <span class="win-menu-item">Favorites</span>
+      <span class="win-menu-item">Help</span>
+    </div>
+    <div class="win-toolbar">
+      <button class="toolbar-btn" onclick="history.back()">&#9664;&#9664; Back</button>
+      <button class="toolbar-btn" disabled>Forward &#9654;&#9654;</button>
+      <button class="toolbar-btn" onclick="location.reload()">&#8635; Refresh</button>
+      <div class="toolbar-address">
+        <span class="toolbar-address-label">Address</span>
+        <span class="toolbar-address-bar">C:\Users\Alexis\Portfolio\projects.html</span>
+      </div>
+    </div>
+
+    <div class="win-body">
+      <div class="win-welcome-banner">
+        &#128193; My Projects
+      </div>
+
+      <!-- Featured project -->
+      <div class="win-section-label">Featured Projects</div>
+
+      <div class="win-project-card">
+        <div class="project-card-titlebar">
+          <span>&#128396; This Portfolio Website</span>
+          <span class="project-badge">HTML / CSS / JS</span>
+        </div>
+        <div class="project-card-body">
+          <p>Built from scratch using HTML, CSS, and JavaScript. Features a Windows 98-inspired UI, smooth navigation between pages, and a personal touch that reflects my love for retro computing. No frameworks, just clean hand-written code.</p>
+          <div class="win-btn-row" style="margin-top:12px">
+            <a href="index.html" class="win-btn">&#128065; View Site</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder cards -->
+      <div class="win-project-card project-card-dimmed">
+        <div class="project-card-titlebar">
+          <span>&#128193; Azure Lab — Coming Soon</span>
+          <span class="project-badge project-badge-gray">In Progress</span>
+        </div>
+        <div class="project-card-body">
+          <p>A home lab writeup documenting Azure VM deployments, Active Directory setup, and M365 tenant management. Stay tuned!</p>
+        </div>
+      </div>
+
+      <div class="win-project-card project-card-dimmed">
+        <div class="project-card-titlebar">
+          <span>&#128193; IT Runbook — Coming Soon</span>
+          <span class="project-badge project-badge-gray">In Progress</span>
+        </div>
+        <div class="project-card-body">
+          <p>A collection of IT support guides, onboarding checklists, and troubleshooting docs. Coming soon!</p>
+        </div>
+      </div>
+
+      <div class="win-inset" style="margin-top:16px; text-align:center">
+        <p>&#128640; More projects coming soon. Check back for updates!</p>
+      </div>
+    </div>
+
+    <div class="win-statusbar">
+      <span class="win-status-panel">Ready</span>
+      <span class="win-status-panel">&#127968; alexissloan.com</span>
+      <span class="win-status-panel" id="win-clock">12:00 PM</span>
+    </div>
+  </div>
+
+  <div class="taskbar-float" id="taskbar-float" style="display:none">
+    <button class="taskbar-restore-btn" onclick="restoreWindow()">&#128193; My Projects</button>
+  </div>
+
+  <div class="taskbar">
+    <button class="start-btn" id="start-btn" onclick="toggleStartMenu()">
+      <div class="start-flag">
+        <div class="flag-red"></div><div class="flag-green"></div>
+        <div class="flag-blue"></div><div class="flag-yellow"></div>
+      </div>
+      <strong>Start</strong>
+    </button>
+    <div class="taskbar-windows">
+      <button class="taskbar-win-btn active-taskbar" onclick="restoreWindow()">&#128193; My Projects</button>
+    </div>
+    <div class="taskbar-tray">
+      <span>&#128266;</span>
+      <span id="taskbar-clock">12:00 PM</span>
+    </div>
+  </div>
+
+  <div class="start-menu hidden" id="start-menu">
+    <div class="start-menu-sidebar"><span class="start-sidebar-text">Windows 98</span></div>
+    <div class="start-menu-items">
+      <a href="index.html" class="start-item">&#128100;&nbsp; My Portfolio</a>
+      <a href="About.html" class="start-item">&#128100;&nbsp; About Me</a>
+      <a href="projects.html" class="start-item">&#128193;&nbsp; My Projects</a>
+      <a href="contact.html" class="start-item">&#9993;&nbsp; Contact</a>
+      <div class="start-divider"></div>
+      <a href="resume.pdf" download="Alexis_Resume.pdf" class="start-item">&#128196;&nbsp; Download Resume</a>
+      <div class="start-divider"></div>
+      <a href="https://www.linkedin.com/in/a-sloan/" target="_blank" class="start-item">&#128279;&nbsp; LinkedIn</a>
+    </div>
+  </div>
+
+</div>
+
+<script src="win98.js"></script>
+</body>
+</html>

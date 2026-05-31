@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alexis Sloan — IT & Cloud Specialist</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="icon/favicon.png">
+</head>
+<body>
+
+<!-- ===================== BOOT SCREEN ===================== -->
+<div id="boot-screen">
+  <div class="boot-inner">
+    <div class="boot-logo">
+      <div class="boot-logo-flag">
+        <div class="flag-red"></div>
+        <div class="flag-green"></div>
+        <div class="flag-blue"></div>
+        <div class="flag-yellow"></div>
+      </div>
+      <div class="boot-logo-text">Windows <span>98</span></div>
+    </div>
+    <div class="boot-tagline">with Internet Explorer</div>
+    <div class="boot-bar-wrap">
+      <div class="boot-bar">
+        <div class="boot-bar-fill" id="boot-bar-fill"></div>
+      </div>
+    </div>
+    <div class="boot-msg" id="boot-msg">Starting Windows 98...</div>
+  </div>
+  <div class="boot-footer">Microsoft Windows 98 &copy; 1998 Microsoft Corporation</div>
+</div>
+
+<!-- ===================== DESKTOP ===================== -->
+<div id="desktop" class="hidden">
+
+  <!-- Desktop Icons -->
+  <div class="desktop-icons">
+    <a href="index.html" class="d-icon active-icon" title="Home">
+      <img src="icon/favicon.png" alt="Home" class="d-icon-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="d-icon-fallback" style="display:none">&#128100;</div>
+      <span>My Portfolio</span>
+    </a>
+    <a href="About.html" class="d-icon" title="About Me">
+      <div class="d-icon-emoji">&#128100;</div>
+      <span>About Me</span>
+    </a>
+    <a href="projects.html" class="d-icon" title="Projects">
+      <div class="d-icon-emoji">&#128193;</div>
+      <span>My Projects</span>
+    </a>
+    <a href="contact.html" class="d-icon" title="Contact">
+      <div class="d-icon-emoji">&#9993;</div>
+      <span>Contact</span>
+    </a>
+    <a href="resume.pdf" download="Alexis_Resume.pdf" class="d-icon" title="Resume">
+      <div class="d-icon-emoji">&#128196;</div>
+      <span>Resume.pdf</span>
+    </a>
+  </div>
+
+  <!-- Main Window -->
+  <div class="win-window" id="main-window">
+    <div class="win-titlebar">
+      <div class="win-titlebar-left">
+        <span class="win-titlebar-icon">&#128100;</span>
+        Alexis Sloan — My Portfolio
+      </div>
+      <div class="win-controls">
+        <button class="win-ctrl-btn" title="Minimize" onclick="minimizeWindow()">&#8722;</button>
+        <button class="win-ctrl-btn" title="Maximize">&#9633;</button>
+        <button class="win-ctrl-btn win-ctrl-close" title="Close">&#10005;</button>
+      </div>
+    </div>
+    <div class="win-menubar">
+      <span class="win-menu-item">File</span>
+      <span class="win-menu-item">Edit</span>
+      <span class="win-menu-item">View</span>
+      <span class="win-menu-item">Favorites</span>
+      <span class="win-menu-item">Help</span>
+    </div>
+    <div class="win-toolbar">
+      <button class="toolbar-btn" disabled>&#9664;&#9664; Back</button>
+      <button class="toolbar-btn" disabled>Forward &#9654;&#9654;</button>
+      <button class="toolbar-btn">&#8635; Refresh</button>
+      <div class="toolbar-address">
+        <span class="toolbar-address-label">Address</span>
+        <span class="toolbar-address-bar">C:\Users\Alexis\Portfolio\index.html</span>
+      </div>
+    </div>
+
+    <div class="win-body">
+      <!-- Welcome Banner -->
+      <div class="win-welcome-banner">
+        <span class="blink-cursor">&#9608;</span> Welcome to Alexis Sloan's Portfolio &nbsp;&nbsp; — &nbsp;&nbsp; IT &amp; Cloud Specialist
+      </div>
+
+      <!-- About snippet + photo area -->
+      <div class="win-two-col">
+        <div class="win-inset win-bio">
+          <h1 class="win-h1">Hi, I'm Alexis! &#128075;</h1>
+          <p>
+            Your go-to IT expert making tech simple and seamless for everyone! Whether it's managing the cloud, troubleshooting, or optimizing systems, I tackle it all with passion and a smile.
+          </p>
+          <p style="margin-top:10px">
+            I hold a BBA in Management Information Systems from Temple University and have hands-on experience with Azure, M365, Active Directory, desktop infrastructure, and more.
+          </p>
+          <div class="win-btn-row" style="margin-top:16px">
+            <a href="About.html" class="win-btn">About Me</a>
+            <a href="contact.html" class="win-btn">Contact Me</a>
+            <a href="resume.pdf" download="Alexis_Resume.pdf" class="win-btn">&#128196; Resume</a>
+          </div>
+        </div>
+
+        <div class="win-inset win-stats">
+          <div class="win-stat-title">System Info</div>
+          <table class="win-stat-table">
+            <tr><td class="stat-label">Name:</td><td>Alexis Sloan</td></tr>
+            <tr><td class="stat-label">Role:</td><td>IT &amp; Cloud Specialist</td></tr>
+            <tr><td class="stat-label">Degree:</td><td>BBA — MIS, Temple</td></tr>
+            <tr><td class="stat-label">Location:</td><td>PA / Remote</td></tr>
+            <tr><td class="stat-label">Status:</td><td><span class="status-badge">&#128994; Available</span></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="win-section-label">Skill Inventory</div>
+      <div class="win-skills-grid">
+        <div class="win-skill-tile">
+          <div class="skill-icon">&#9729;</div>
+          <div class="skill-name">Microsoft Azure</div>
+        </div>
+        <div class="win-skill-tile">
+          <div class="skill-icon">&#128187;</div>
+          <div class="skill-name">M365 Admin</div>
+        </div>
+        <div class="win-skill-tile">
+          <div class="skill-icon">&#128272;</div>
+          <div class="skill-name">Active Directory</div>
+        </div>
+        <div class="win-skill-tile">
+          <div class="skill-icon">&#128736;</div>
+          <div class="skill-name">IT Support</div>
+        </div>
+        <div class="win-skill-tile">
+          <div class="skill-icon">&#128396;</div>
+          <div class="skill-name">HTML / CSS / JS</div>
+        </div>
+        <div class="win-skill-tile">
+          <div class="skill-icon">&#128172;</div>
+          <div class="skill-name">Slack Admin</div>
+        </div>
+        <div class="win-skill-tile">
+          <div class="skill-icon">&#127760;</div>
+          <div class="skill-name">WordPress</div>
+        </div>
+        <div class="win-skill-tile">
+          <div class="skill-icon">&#128444;</div>
+          <div class="skill-name">Adobe Admin</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="win-statusbar">
+      <span class="win-status-panel">Ready</span>
+      <span class="win-status-panel">&#127968; alexissloan.com</span>
+      <span class="win-status-panel" id="win-clock">12:00 PM</span>
+    </div>
+  </div>
+
+  <!-- Minimized taskbar window placeholder -->
+  <div class="taskbar-float" id="taskbar-float" style="display:none">
+    <button class="taskbar-restore-btn" onclick="restoreWindow()">&#128100; My Portfolio</button>
+  </div>
+
+  <!-- Taskbar -->
+  <div class="taskbar">
+    <button class="start-btn" id="start-btn" onclick="toggleStartMenu()">
+      <div class="start-flag">
+        <div class="flag-red"></div>
+        <div class="flag-green"></div>
+        <div class="flag-blue"></div>
+        <div class="flag-yellow"></div>
+      </div>
+      <strong>Start</strong>
+    </button>
+
+    <div class="taskbar-windows">
+      <button class="taskbar-win-btn active-taskbar" onclick="restoreWindow()">&#128100; My Portfolio</button>
+    </div>
+
+    <div class="taskbar-tray">
+      <span>&#128266;</span>
+      <span>&#128246;</span>
+      <span id="taskbar-clock">12:00 PM</span>
+    </div>
+  </div>
+
+  <!-- Start Menu -->
+  <div class="start-menu hidden" id="start-menu">
+    <div class="start-menu-sidebar">
+      <span class="start-sidebar-text">Windows 98</span>
+    </div>
+    <div class="start-menu-items">
+      <a href="index.html" class="start-item">&#128100;&nbsp; My Portfolio</a>
+      <a href="About.html" class="start-item">&#128100;&nbsp; About Me</a>
+      <a href="projects.html" class="start-item">&#128193;&nbsp; My Projects</a>
+      <a href="contact.html" class="start-item">&#9993;&nbsp; Contact</a>
+      <div class="start-divider"></div>
+      <a href="resume.pdf" download="Alexis_Resume.pdf" class="start-item">&#128196;&nbsp; Download Resume</a>
+      <div class="start-divider"></div>
+      <a href="https://www.linkedin.com/in/a-sloan/" target="_blank" class="start-item">&#128279;&nbsp; LinkedIn</a>
+    </div>
+  </div>
+
+</div><!-- end desktop -->
+
+<script src="win98.js"></script>
+</body>
+</html>
