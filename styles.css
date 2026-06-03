@@ -903,3 +903,123 @@ body {
 .hidden {
   display: none !important;
 }
+
+
+/* =====================================================
+   SKILL MODAL (Win98 Properties Dialog)
+   ===================================================== */
+.win-skill-tile {
+  cursor: pointer;
+}
+
+.win-skill-tile:active {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.skill-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  animation: fadeIn 0.1s ease-out;
+}
+
+.skill-modal-overlay.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.skill-modal {
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  box-shadow: 2px 2px 0 #000;
+  width: 380px;
+  max-width: 92vw;
+  animation: winOpen 0.12s ease-out;
+}
+
+.skill-modal-titlebar {
+  background: linear-gradient(to right, #000080, #1084d0);
+  color: white;
+  padding: 3px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.skill-modal-titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skill-modal-body {
+  padding: 18px 16px 14px 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.skill-modal-icon {
+  font-size: 40px;
+  line-height: 1;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.skill-modal-content h3 {
+  font-size: 13px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 8px;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+}
+
+.skill-modal-content p {
+  font-size: 12px;
+  color: #000;
+  line-height: 1.5;
+}
+
+.skill-modal-footer {
+  padding: 0 16px 14px 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.skill-modal-btn {
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  padding: 3px 18px;
+  font-size: 12px;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+  cursor: pointer;
+  color: #000;
+  min-width: 70px;
+}
+
+.skill-modal-btn:active {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
