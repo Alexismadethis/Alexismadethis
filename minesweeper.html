@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minesweeper</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    /* ===== Minesweeper-specific styles ===== */
+    .ms-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 14px;
+    }
+    .ms-frame {
+      background: #c0c0c0;
+      padding: 8px;
+      border-top: 3px solid #ffffff;
+      border-left: 3px solid #ffffff;
+      border-right: 3px solid #808080;
+      border-bottom: 3px solid #808080;
+      display: inline-block;
+    }
+    .ms-header {
+      background: #c0c0c0;
+      border-top: 2px solid #808080;
+      border-left: 2px solid #808080;
+      border-right: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      padding: 6px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .ms-counter {
+      background: #000;
+      color: #ff0000;
+      font-family: 'VT323', 'Courier New', monospace;
+      font-size: 28px;
+      font-weight: bold;
+      padding: 0 6px;
+      letter-spacing: 2px;
+      min-width: 56px;
+      text-align: center;
+      border-top: 1px solid #404040;
+      border-left: 1px solid #404040;
+      border-right: 1px solid #ffffff;
+      border-bottom: 1px solid #ffffff;
+      line-height: 1;
+    }
+    .ms-face {
+      width: 36px;
+      height: 36px;
+      background: #c0c0c0;
+      border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #808080;
+      border-bottom: 2px solid #808080;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      line-height: 1;
+    }
+    .ms-face:active {
+      border-top: 2px solid #808080;
+      border-left: 2px solid #808080;
+      border-right: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+    }
+    .ms-grid {
+      background: #c0c0c0;
+      border-top: 3px solid #808080;
+      border-left: 3px solid #808080;
+      border-right: 3px solid #ffffff;
+      border-bottom: 3px solid #ffffff;
+      display: inline-block;
+      padding: 0;
+      user-select: none;
+    }
+    .ms-row {
+      display: flex;
+    }
+    .ms-cell {
+      width: 24px;
+      height: 24px;
+      background: #c0c0c0;
+      border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #808080;
+      border-bottom: 2px solid #808080;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'MS Sans Serif', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      box-sizing: border-box;
+      line-height: 1;
+    }
+    .ms-cell.revealed {
+      background: #c0c0c0;
+      border: 1px solid #808080;
+      cursor: default;
+    }
+    .ms-cell.mine-exploded {
+      background: #ff0000;
+      border: 1px solid #808080;
+    }
+    .ms-cell.flagged {
+      cursor: pointer;
+    }
+    /* Classic Minesweeper number colors */
+    .num-1 { color: #0000ff; }
+    .num-2 { color: #008000; }
+    .num-3 { color: #ff0000; }
+    .num-4 { color: #000080; }
+    .num-5 { color: #800000; }
+    .num-6 { color: #008080; }
+    .num-7 { color: #000000; }
+    .num-8 { color: #808080; }
+
+    .ms-difficulty {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 12px;
+    }
+    .ms-diff-btn {
+      background: #c0c0c0;
+      border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #808080;
+      border-bottom: 2px solid #808080;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-family: 'MS Sans Serif', Arial, sans-serif;
+      cursor: pointer;
+    }
+    .ms-diff-btn.active {
+      border-top: 2px solid #808080;
+      border-left: 2px solid #808080;
+      border-right: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      background: #b8b8b8;
+    }
+    .ms-help {
+      text-align: center;
+      font-size: 11px;
+      color: #000;
+      margin-top: 10px;
+      padding: 0 12px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="desktop" class="no-boot">
+
+  <div class="desktop-icons">
+    <a href="index.html" class="d-icon" title="Home">
+      <div class="d-icon-emoji">&#127968;</div>
+      <span>My Portfolio</span>
+    </a>
+    <a href="About.html" class="d-icon" title="About Me">
+      <div class="d-icon-emoji">&#128100;</div>
+      <span>About Me</span>
+    </a>
+    <a href="projects.html" class="d-icon" title="Projects">
+      <div class="d-icon-emoji">&#128193;</div>
+      <span>My Projects</span>
+    </a>
+    <a href="contact.html" class="d-icon" title="Contact">
+      <div class="d-icon-emoji">&#9993;</div>
+      <span>Contact</span>
+    </a>
+    <a href="minesweeper.html" class="d-icon active-icon" title="Minesweeper">
+      <div class="d-icon-emoji">&#128163;</div>
+      <span>Minesweeper</span>
+    </a>
+    <a href="resume.pdf" download="Alexis_Resume.pdf" class="d-icon" title="Resume">
+      <div class="d-icon-emoji">&#128196;</div>
+      <span>Resume.pdf</span>
+    </a>
+  </div>
+
+  <div class="win-window" id="main-window" style="max-width:520px">
+    <div class="win-titlebar">
+      <div class="win-titlebar-left">
+        <span class="win-titlebar-icon">&#128163;</span>
+        Minesweeper
+      </div>
+      <div class="win-controls">
+        <button class="win-ctrl-btn" title="Minimize" onclick="minimizeWindow()">&#8722;</button>
+        <button class="win-ctrl-btn" title="Maximize">&#9633;</button>
+        <a href="index.html"><button class="win-ctrl-btn win-ctrl-close" title="Close">&#10005;</button></a>
+      </div>
+    </div>
+    <div class="win-menubar">
+      <span class="win-menu-item" onclick="msNewGame()">Game</span>
+      <span class="win-menu-item">Help</span>
+    </div>
+
+    <div class="win-body" style="min-height:0; padding:10px">
+
+      <div class="ms-wrap">
+        <div class="ms-frame">
+          <div class="ms-header">
+            <div class="ms-counter" id="ms-mine-count">010</div>
+            <button class="ms-face" id="ms-face" onclick="msNewGame()" title="New Game">&#128512;</button>
+            <div class="ms-counter" id="ms-timer">000</div>
+          </div>
+          <div class="ms-grid" id="ms-grid"></div>
+        </div>
+      </div>
+
+      <div class="ms-difficulty">
+        <button class="ms-diff-btn active" data-diff="easy" onclick="msSetDifficulty('easy')">Beginner</button>
+        <button class="ms-diff-btn" data-diff="medium" onclick="msSetDifficulty('medium')">Intermediate</button>
+        <button class="ms-diff-btn" data-diff="hard" onclick="msSetDifficulty('hard')">Expert</button>
+      </div>
+
+      <div class="ms-help">
+        Left click to reveal. Right click to flag. Don't blow yourself up!
+      </div>
+    </div>
+
+    <div class="win-statusbar">
+      <span class="win-status-panel">Ready</span>
+      <span class="win-status-panel">&#127968; alexissloan.com</span>
+      <span class="win-status-panel" id="win-clock">12:00 PM</span>
+    </div>
+  </div>
+
+  <div class="taskbar-float" id="taskbar-float" style="display:none">
+    <button class="taskbar-restore-btn" onclick="restoreWindow()">&#128163; Minesweeper</button>
+  </div>
+
+  <div class="taskbar">
+    <button class="start-btn" id="start-btn" onclick="toggleStartMenu()">
+      <div class="start-flag">
+        <div class="flag-red"></div><div class="flag-green"></div>
+        <div class="flag-blue"></div><div class="flag-yellow"></div>
+      </div>
+      <strong>Start</strong>
+    </button>
+    <div class="taskbar-windows">
+      <button class="taskbar-win-btn active-taskbar" onclick="restoreWindow()">&#128163; Minesweeper</button>
+    </div>
+    <div class="taskbar-tray">
+      <span>&#128266;</span>
+      <span id="taskbar-clock">12:00 PM</span>
+    </div>
+  </div>
+
+  <div class="start-menu hidden" id="start-menu">
+    <div class="start-menu-sidebar"><span class="start-sidebar-text">Windows 98</span></div>
+    <div class="start-menu-items">
+      <a href="index.html" class="start-item">&#128100;&nbsp; My Portfolio</a>
+      <a href="About.html" class="start-item">&#128100;&nbsp; About Me</a>
+      <a href="projects.html" class="start-item">&#128193;&nbsp; My Projects</a>
+      <a href="contact.html" class="start-item">&#9993;&nbsp; Contact</a>
+      <div class="start-divider"></div>
+      <a href="minesweeper.html" class="start-item">&#128163;&nbsp; Minesweeper</a>
+      <div class="start-divider"></div>
+      <a href="resume.pdf" download="Alexis_Resume.pdf" class="start-item">&#128196;&nbsp; Download Resume</a>
+      <a href="https://www.linkedin.com/in/a-sloan/" target="_blank" class="start-item">&#128279;&nbsp; LinkedIn</a>
+    </div>
+  </div>
+
+</div>
+
+<script src="win98.js"></script>
+<script>
+/* ===== Minesweeper ===== */
+const MS_DIFFS = {
+  easy:   { rows: 9,  cols: 9,  mines: 10 },
+  medium: { rows: 12, cols: 12, mines: 25 },
+  hard:   { rows: 14, cols: 16, mines: 40 }
+};
+
+let msRows = 9, msCols = 9, msMines = 10;
+let msBoard = [];          // 2D array: { mine, revealed, flagged, neighbor }
+let msFirstClick = true;
+let msGameOver = false;
+let msFlagCount = 0;
+let msRevealedCount = 0;
+let msTimerId = null;
+let msSeconds = 0;
+let msCurrentDiff = 'easy';
+
+function msPad(n) {
+  n = Math.max(0, Math.min(999, n));
+  return String(n).padStart(3, '0');
+}
+
+function msUpdateMineCount() {
+  document.getElementById('ms-mine-count').textContent = msPad(msMines - msFlagCount);
+}
+
+function msUpdateTimer() {
+  document.getElementById('ms-timer').textContent = msPad(msSeconds);
+}
+
+function msStartTimer() {
+  msStopTimer();
+  msTimerId = setInterval(function() {
+    msSeconds++;
+    msUpdateTimer();
+  }, 1000);
+}
+
+function msStopTimer() {
+  if (msTimerId) {
+    clearInterval(msTimerId);
+    msTimerId = null;
+  }
+}
+
+function msSetDifficulty(diff) {
+  msCurrentDiff = diff;
+  const d = MS_DIFFS[diff];
+  msRows = d.rows;
+  msCols = d.cols;
+  msMines = d.mines;
+  document.querySelectorAll('.ms-diff-btn').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.diff === diff);
+  });
+  msNewGame();
+}
+
+function msNewGame() {
+  msStopTimer();
+  msSeconds = 0;
+  msFirstClick = true;
+  msGameOver = false;
+  msFlagCount = 0;
+  msRevealedCount = 0;
+
+  msBoard = [];
+  for (let r = 0; r < msRows; r++) {
+    const row = [];
+    for (let c = 0; c < msCols; c++) {
+      row.push({ mine: false, revealed: false, flagged: false, neighbor: 0 });
+    }
+    msBoard.push(row);
+  }
+
+  msUpdateMineCount();
+  msUpdateTimer();
+  document.getElementById('ms-face').innerHTML = '&#128512;';
+  msRenderGrid();
+}
+
+function msPlaceMines(safeR, safeC) {
+  let placed = 0;
+  while (placed < msMines) {
+    const r = Math.floor(Math.random() * msRows);
+    const c = Math.floor(Math.random() * msCols);
+    // Don't place on first-click cell or its neighbors
+    if (Math.abs(r - safeR) <= 1 && Math.abs(c - safeC) <= 1) continue;
+    if (msBoard[r][c].mine) continue;
+    msBoard[r][c].mine = true;
+    placed++;
+  }
+  // Compute neighbor counts
+  for (let r = 0; r < msRows; r++) {
+    for (let c = 0; c < msCols; c++) {
+      if (msBoard[r][c].mine) continue;
+      let n = 0;
+      for (let dr = -1; dr <= 1; dr++) {
+        for (let dc = -1; dc <= 1; dc++) {
+          if (dr === 0 && dc === 0) continue;
+          const nr = r + dr, nc = c + dc;
+          if (nr < 0 || nr >= msRows || nc < 0 || nc >= msCols) continue;
+          if (msBoard[nr][nc].mine) n++;
+        }
+      }
+      msBoard[r][c].neighbor = n;
+    }
+  }
+}
+
+function msRenderGrid() {
+  const grid = document.getElementById('ms-grid');
+  grid.innerHTML = '';
+  for (let r = 0; r < msRows; r++) {
+    const rowEl = document.createElement('div');
+    rowEl.className = 'ms-row';
+    for (let c = 0; c < msCols; c++) {
+      const cellEl = document.createElement('div');
+      cellEl.className = 'ms-cell';
+      cellEl.dataset.r = r;
+      cellEl.dataset.c = c;
+      cellEl.addEventListener('click', msHandleLeftClick);
+      cellEl.addEventListener('contextmenu', msHandleRightClick);
+      rowEl.appendChild(cellEl);
+    }
+    grid.appendChild(rowEl);
+  }
+}
+
+function msHandleLeftClick(e) {
+  if (msGameOver) return;
+  const r = parseInt(this.dataset.r, 10);
+  const c = parseInt(this.dataset.c, 10);
+  const cell = msBoard[r][c];
+  if (cell.flagged || cell.revealed) return;
+
+  if (msFirstClick) {
+    msPlaceMines(r, c);
+    msFirstClick = false;
+    msStartTimer();
+  }
+
+  if (cell.mine) {
+    msRevealAllMines(r, c);
+    msEndGame(false);
+    return;
+  }
+
+  msFloodReveal(r, c);
+  msCheckWin();
+}
+
+function msHandleRightClick(e) {
+  e.preventDefault();
+  if (msGameOver || msFirstClick) return;
+  const r = parseInt(this.dataset.r, 10);
+  const c = parseInt(this.dataset.c, 10);
+  const cell = msBoard[r][c];
+  if (cell.revealed) return;
+  cell.flagged = !cell.flagged;
+  msFlagCount += cell.flagged ? 1 : -1;
+  msUpdateMineCount();
+  msPaintCell(r, c);
+}
+
+function msFloodReveal(r, c) {
+  const stack = [[r, c]];
+  while (stack.length) {
+    const [cr, cc] = stack.pop();
+    const cell = msBoard[cr][cc];
+    if (cell.revealed || cell.flagged || cell.mine) continue;
+    cell.revealed = true;
+    msRevealedCount++;
+    msPaintCell(cr, cc);
+    if (cell.neighbor === 0) {
+      for (let dr = -1; dr <= 1; dr++) {
+        for (let dc = -1; dc <= 1; dc++) {
+          if (dr === 0 && dc === 0) continue;
+          const nr = cr + dr, nc = cc + dc;
+          if (nr < 0 || nr >= msRows || nc < 0 || nc >= msCols) continue;
+          stack.push([nr, nc]);
+        }
+      }
+    }
+  }
+}
+
+function msPaintCell(r, c) {
+  const cell = msBoard[r][c];
+  const el = document.querySelector('.ms-cell[data-r="' + r + '"][data-c="' + c + '"]');
+  if (!el) return;
+  el.className = 'ms-cell';
+  el.innerHTML = '';
+  if (cell.revealed) {
+    el.classList.add('revealed');
+    if (cell.mine) {
+      el.innerHTML = '&#128163;';
+    } else if (cell.neighbor > 0) {
+      el.classList.add('num-' + cell.neighbor);
+      el.textContent = cell.neighbor;
+    }
+  } else if (cell.flagged) {
+    el.classList.add('flagged');
+    el.innerHTML = '&#128681;';
+  }
+}
+
+function msRevealAllMines(explodedR, explodedC) {
+  for (let r = 0; r < msRows; r++) {
+    for (let c = 0; c < msCols; c++) {
+      const cell = msBoard[r][c];
+      if (cell.mine && !cell.flagged) {
+        cell.revealed = true;
+        msPaintCell(r, c);
+        if (r === explodedR && c === explodedC) {
+          const el = document.querySelector('.ms-cell[data-r="' + r + '"][data-c="' + c + '"]');
+          if (el) el.classList.add('mine-exploded');
+        }
+      } else if (!cell.mine && cell.flagged) {
+        // Wrongly flagged
+        const el = document.querySelector('.ms-cell[data-r="' + r + '"][data-c="' + c + '"]');
+        if (el) {
+          el.classList.add('revealed');
+          el.innerHTML = '&#10060;';
+        }
+      }
+    }
+  }
+}
+
+function msCheckWin() {
+  const totalSafe = msRows * msCols - msMines;
+  if (msRevealedCount >= totalSafe) {
+    msEndGame(true);
+  }
+}
+
+function msEndGame(won) {
+  msGameOver = true;
+  msStopTimer();
+  document.getElementById('ms-face').innerHTML = won ? '&#128526;' : '&#128565;';
+  if (won) {
+    // Auto-flag remaining mines
+    for (let r = 0; r < msRows; r++) {
+      for (let c = 0; c < msCols; c++) {
+        if (msBoard[r][c].mine && !msBoard[r][c].flagged) {
+          msBoard[r][c].flagged = true;
+          msFlagCount++;
+          msPaintCell(r, c);
+        }
+      }
+    }
+    msUpdateMineCount();
+  }
+}
+
+// Prevent right-click menu on the whole grid area
+document.getElementById('ms-grid').addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+
+// Boot it up
+msNewGame();
+</script>
+
+</body>
+</html>
