@@ -5,42 +5,42 @@ const SKILL_DETAILS = {
   'entra': {
     icon: '🔐',
     title: 'Microsoft Entra ID',
-    body: 'This is where I live for identity and access. I have run full governance audits, cleaned up ghost admin accounts, reduced Global Admin sprawl, and made sure least privilege actually means something. MFA, Conditional Access, and identity risk remediation are all part of my daily toolkit.'
+    body: 'Conduct governance audits, clean up legacy admin accounts, and enforce least-privilege access. MFA and Conditional Access are part of my standard toolkit.'
   },
   'intune': {
     icon: '📱',
     title: 'Microsoft Intune',
-    body: 'My endpoint management home base for both Windows and macOS. I have rebuilt entire tenants from the ground up, fixed conflicting policies, deployed apps, and locked things down without making people\'s lives harder. Configuration profiles, compliance policies, and app deployment are all in my wheelhouse.'
+    body: 'Manage company devices across both Windows and macOS environments. I\'ve taken over Intune setups with conflicting policies, reviewed and refined what was salvageable, and rebuilt the rest from scratch. The goal is always a clean, secure environment that doesn\'t disrupt end users.'
   },
   'apple-mdm': {
     icon: '🍎',
     title: 'Apple MDM (ABM)',
-    body: 'I recovered a lost Apple Business Manager setup, integrated it with Intune, and built out Automated Device Enrollment so new Macs onboard themselves. Fewer hands on each device and a much smoother day one experience for new hires.'
+    body: 'Configured Apple Business Manager and integrated it with Intune to enable Automated Device Enrollment. New Macs now onboard themselves, giving new hires a seamless day-one experience.'
   },
   'ai-admin': {
     icon: '🤖',
     title: 'Enterprise AI Admin',
-    body: 'I managed a full Claude AI rollout from the initial Team pilot all the way to Enterprise deployment. That included SSO integration, secure tenant configuration, and automated user provisioning. AI tools done right, with security baked in from the start.'
+    body: 'Led a full Claude AI rollout, scaling from a Team pilot to enterprise-wide deployment. The work included SSO integration, secure tenant configuration, and automated user provisioning.'
   },
   'lifecycle': {
     icon: '👥',
     title: 'User Lifecycle Management',
-    body: 'From day one provisioning all the way to secure offboarding, I own the whole journey. I have built structured onboarding programs that get new hires productive faster, and I make sure no one keeps access they should not have once they move on.'
+    body: 'Own the full employee tech journey, from automated provisioning on day one to secure offboarding. I\'ve built onboarding programs that get new hires productive faster and ensure access is properly revoked when someone moves on.'
   },
   'assets': {
     icon: '🖥️',
     title: 'Asset Management',
-    body: 'Using Microsoft Graph API I have automated device inventory and resource tracking so nothing falls through the cracks. Knowing exactly what you have, where it is, and who has it is half the battle in any IT environment.'
+    body: 'Automate device inventory and resource tracking using the Microsoft Graph API. Knowing exactly what hardware exists, where it is, and who has it is essential to running a secure IT environment.'
   },
   'saas': {
     icon: '🔑',
     title: 'SaaS Access Control',
-    body: 'I keep enterprise apps locked down to the right people. Browser extension lockdowns across Chrome, Edge, and Firefox, USB restriction policies with structured exception management, and the kind of access controls that protect data without slowing anyone down.'
+    body: 'Manage access to enterprise applications and enforce security baselines, including browser extension lockdowns and structured USB restriction policies. The goal is protecting data without slowing anyone down.'
   },
   'webdev': {
     icon: '💻',
     title: 'HTML / CSS / JavaScript',
-    body: 'You are looking at it! This whole site was hand coded, no templates and no page builders. I love that web development gives me a creative outlet alongside the systems work, and it keeps my problem solving sharp in a totally different way.'
+    body: 'You\'re looking at it. I built this site by using HTML, CSS, and JavaScript. Web development gives me a creative outlet alongside my systems work and keeps my problem-solving skills sharp.'
   }
 };
 
