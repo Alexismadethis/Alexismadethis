@@ -40,6 +40,11 @@
       <div class="d-icon-emoji">&#128196;</div>
       <span>Resume.pdf</span>
     </a>
+    <a href="javascript:void(0)" class="d-icon" title="Recycle Bin" onclick="openRecycleBin()">
+      <div class="d-icon-emoji">&#128465;</div>
+      <span>Recycle Bin</span>
+    </a>
+
   </div>
 
   <div class="win-window" id="main-window">
@@ -144,7 +149,7 @@
       <button class="taskbar-win-btn active-taskbar" onclick="restoreWindow()">&#9993; Contact</button>
     </div>
     <div class="taskbar-tray">
-      <span>&#128266;</span>
+      <span id="sound-toggle" onclick="toggleSound()" title="Toggle sounds" style="cursor:pointer">&#128266;</span>
       <span id="taskbar-clock">12:00 PM</span>
     </div>
   </div>

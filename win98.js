@@ -182,3 +182,193 @@ if (bootScreen && desktop) {
   setTimeout(bootStep, 500);
 }
 
+
+/* =====================================================
+   SOUND SYSTEM
+   Sounds are synthesized with the Web Audio API so no
+   external audio files are needed. Default ON; user can
+   toggle via the speaker icon in the system tray.
+   ===================================================== */
+let soundEnabled = true;
+try {
+  const stored = localStorage.getItem('win98-sound');
+  if (stored === 'off') soundEnabled = false;
+} catch (e) { /* private mode, ignore */ }
+
+let audioCtx = null;
+function getCtx() {
+  if (!audioCtx) {
+    try {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    } catch (e) { return null; }
+  }
+  return audioCtx;
+}
+
+function playTone(freq, duration, type, gain) {
+  if (!soundEnabled) return;
+  const ctx = getCtx();
+  if (!ctx) return;
+  if (ctx.state === 'suspended') { try { ctx.resume(); } catch(e){} }
+  const osc = ctx.createOscillator();
+  const g = ctx.createGain();
+  osc.type = type || 'square';
+  osc.frequency.value = freq;
+  g.gain.value = gain || 0.08;
+  g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+  osc.connect(g);
+  g.connect(ctx.destination);
+  osc.start();
+  osc.stop(ctx.currentTime + duration);
+}
+
+function playClick() {
+  playTone(800, 0.04, 'square', 0.05);
+}
+
+function playDing() {
+  if (!soundEnabled) return;
+  playTone(880, 0.12, 'sine', 0.1);
+  setTimeout(function(){ playTone(1320, 0.18, 'sine', 0.08); }, 90);
+}
+
+function playChime() {
+  if (!soundEnabled) return;
+  const notes = [523, 659, 784, 1047];
+  notes.forEach(function(n, i) {
+    setTimeout(function(){ playTone(n, 0.25, 'sine', 0.07); }, i * 120);
+  });
+}
+
+function playError() {
+  if (!soundEnabled) return;
+  playTone(220, 0.15, 'square', 0.08);
+  setTimeout(function(){ playTone(180, 0.2, 'square', 0.08); }, 120);
+}
+
+function updateSoundIcon() {
+  const icon = document.getElementById('sound-toggle');
+  if (icon) icon.textContent = soundEnabled ? '\u{1F50A}' : '\u{1F507}';
+}
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  try { localStorage.setItem('win98-sound', soundEnabled ? 'on' : 'off'); } catch(e){}
+  updateSoundIcon();
+  if (soundEnabled) {
+    const ctx = getCtx();
+    if (ctx && ctx.state === 'suspended') ctx.resume();
+    playDing();
+  }
+}
+
+// Click sound on Win98 buttons and icons
+document.addEventListener('click', function(e) {
+  const t = e.target.closest('.win-btn, .toolbar-btn, .win-ctrl-btn, .start-btn, .taskbar-win-btn, .d-icon, .start-item, .skill-modal-btn, .win-skill-tile');
+  if (t) playClick();
+});
+
+// Set the icon on every page load
+document.addEventListener('DOMContentLoaded', updateSoundIcon);
+
+/* =====================================================
+   RECYCLE BIN
+   ===================================================== */
+const recycleBinContents = [
+  { icon: '\u{1F4C4}', name: 'imposter_syndrome.txt', size: '0 KB' },
+  { icon: '\u{1F310}', name: 'Internet_Explorer_6.exe', size: '404 KB' },
+  { icon: '\u{1F4CE}', name: 'clippy.exe', size: '1.21 MB' },
+  { icon: '\u{1F4C4}', name: 'old_portfolio_v1.html', size: '12 KB' },
+  { icon: '\u{1F4C4}', name: 'passwords.txt', size: '0 KB' },
+  { icon: '\u{1F5BC}', name: 'monday_motivation.gif', size: '88 KB' },
+  { icon: '\u{1F4C4}', name: 'buggy_code.js', size: '666 KB' },
+  { icon: '\u{1F4C4}', name: 'meetings_that_couldve_been_emails.docx', size: '4.2 MB' }
+];
+
+function openRecycleBin() {
+  playDing();
+  if (document.getElementById('recycle-bin-window')) return;
+  const overlay = document.createElement('div');
+  overlay.id = 'recycle-bin-window';
+  overlay.className = 'rb-overlay';
+
+  let rows = '';
+  recycleBinContents.forEach(function(item) {
+    rows += '<div class="rb-item" onclick="rbItemClick(this)">' +
+              '<span class="rb-item-icon">' + item.icon + '</span>' +
+              '<span class="rb-item-name">' + item.name + '</span>' +
+              '<span class="rb-item-size">' + item.size + '</span>' +
+            '</div>';
+  });
+
+  overlay.innerHTML =
+    '<div class="rb-window">' +
+      '<div class="win-titlebar">' +
+        '<div class="win-titlebar-left"><span class="win-titlebar-icon">\u{1F5D1}</span> Recycle Bin</div>' +
+        '<div class="win-controls">' +
+          '<button class="win-ctrl-btn" title="Close" onclick="closeRecycleBin()">\u2715</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="win-menubar">' +
+        '<span class="win-menu-item">File</span>' +
+        '<span class="win-menu-item">Edit</span>' +
+        '<span class="win-menu-item">View</span>' +
+        '<span class="win-menu-item">Help</span>' +
+      '</div>' +
+      '<div class="rb-body">' +
+        '<div class="rb-header">' +
+          '<span class="rb-col rb-col-name">Name</span>' +
+          '<span class="rb-col rb-col-size">Size</span>' +
+        '</div>' +
+        '<div class="rb-list">' + rows + '</div>' +
+        '<div class="rb-footer">' +
+          '<button class="win-btn" onclick="rbEmpty()">Empty Recycle Bin</button>' +
+          '<span class="rb-status">' + recycleBinContents.length + ' object(s)</span>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeRecycleBin();
+  });
+}
+
+function closeRecycleBin() {
+  const el = document.getElementById('recycle-bin-window');
+  if (el) el.remove();
+}
+
+function rbItemClick(el) {
+  document.querySelectorAll('.rb-item.selected').forEach(function(i){ i.classList.remove('selected'); });
+  el.classList.add('selected');
+}
+
+function rbEmpty() {
+  playError();
+  const list = document.querySelector('.rb-list');
+  const status = document.querySelector('.rb-status');
+  if (list) list.innerHTML = '<div class="rb-empty-msg">\u{1F4ED} This folder is empty.<br><br>Just like my excuses for not updating this site more often.</div>';
+  if (status) status.textContent = '0 object(s)';
+}
+
+// Esc closes Recycle Bin too
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeRecycleBin();
+});
+
+// Play chime on boot completion if sound is enabled
+if (bootScreen && desktop) {
+  const _origBootDone = bootScreen;
+  // Hook into desktop reveal: poll briefly until desktop is shown
+  let _chimePlayed = false;
+  const _chimeCheck = setInterval(function() {
+    if (!desktop.classList.contains('hidden') && !_chimePlayed) {
+      _chimePlayed = true;
+      playChime();
+      clearInterval(_chimeCheck);
+    }
+  }, 200);
+  // Stop polling after 12 seconds no matter what
+  setTimeout(function(){ clearInterval(_chimeCheck); }, 12000);
+}
