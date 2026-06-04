@@ -372,3 +372,33 @@ if (bootScreen && desktop) {
   // Stop polling after 12 seconds no matter what
   setTimeout(function(){ clearInterval(_chimeCheck); }, 12000);
 }
+
+/* =====================================================
+   CLIPPY OFFICE ASSISTANT (projects page)
+   ===================================================== */
+function showClippy() {
+  const clippy = document.getElementById('clippy-container');
+  if (!clippy) return;
+  try {
+    if (sessionStorage.getItem('clippyDismissed') === 'true') return;
+  } catch (e) { /* private mode, ignore */ }
+  clippy.classList.remove('clippy-hidden');
+  if (typeof playDing === 'function') playDing();
+}
+
+function dismissClippy() {
+  const clippy = document.getElementById('clippy-container');
+  if (clippy) clippy.classList.add('clippy-hidden');
+  try { sessionStorage.setItem('clippyDismissed', 'true'); } catch (e) {}
+  if (typeof playClick === 'function') playClick();
+}
+
+function toggleClippyBubble() {
+  const bubble = document.getElementById('clippy-bubble');
+  if (bubble) bubble.classList.toggle('bubble-hidden');
+  if (typeof playClick === 'function') playClick();
+}
+
+if (document.getElementById('clippy-container')) {
+  setTimeout(showClippy, 2000);
+}

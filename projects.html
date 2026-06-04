@@ -105,6 +105,21 @@
       </div>
        </div>
 
+  <!-- Clippy Office Assistant -->
+  <div id="clippy-container" class="clippy-hidden">
+    <div class="clippy-bubble" id="clippy-bubble">
+      <button class="clippy-bubble-close" onclick="dismissClippy()" aria-label="Close">&#10005;</button>
+      <p class="clippy-bubble-title">It looks like Alexis is cooking up more projects!</p>
+      <p class="clippy-bubble-text">Want to check back later, or get in touch?</p>
+      <div class="clippy-bubble-actions">
+        <a href="contact.html" class="clippy-bubble-btn">&#9993; Contact Alexis</a>
+        <a href="https://www.linkedin.com/in/a-sloan/" target="_blank" class="clippy-bubble-btn">&#128279; View LinkedIn</a>
+        <button class="clippy-bubble-btn" onclick="dismissClippy()">No thanks</button>
+      </div>
+    </div>
+    <img src="clippy.png" alt="Clippy" class="clippy-img" onclick="toggleClippyBubble()">
+  </div>
+
     <div class="win-statusbar">
       <span class="win-status-panel">Ready</span>
       <span class="win-status-panel">&#127968; alexissloan.com</span>
