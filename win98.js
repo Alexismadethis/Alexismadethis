@@ -15,7 +15,7 @@ const SKILL_DETAILS = {
   'apple-mdm': {
     icon: '🍎',
     title: 'Apple MDM (ABM)',
-    body: 'Configured Apple Business Manager and integrated it with Intune to enable Automated Device Enrollment. New Macs now onboard themselves, giving new hires a seamless day-one experience.'
+    body: 'Configured Apple Business Manager and integrated it with Intune so new Macs auto-enroll through ADE. Combined with Entra SSO via Company Portal, new hires get a streamlined day-one setup tied to their company identity.'
   },
   'ai-admin': {
     icon: '🤖',
@@ -401,4 +401,16 @@ function toggleClippyBubble() {
 
 if (document.getElementById('clippy-container')) {
   setTimeout(showClippy, 2000);
+}
+
+/* =====================================================
+   COLLAPSIBLE PROJECT CARDS
+   Add classes "collapsible collapsed" to any .win-project-card
+   to make it expandable. Click the titlebar to toggle.
+   ===================================================== */
+function toggleProjectCard(titlebarEl) {
+  const card = titlebarEl.closest('.win-project-card');
+  if (!card) return;
+  card.classList.toggle('collapsed');
+  if (typeof playClick === 'function') playClick();
 }

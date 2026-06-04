@@ -98,6 +98,38 @@
         </div>
       </div>
 
+      <div class="win-project-card collapsible collapsed">
+        <div class="project-card-titlebar" onclick="toggleProjectCard(this)">
+          <span><span class="card-toggle-indicator">&#9660;</span>&#127822; Apple MDM Pipeline Rebuild</span>
+          <span class="project-badge">Intune / Entra / ABM</span>
+        </div>
+        <div class="project-card-body">
+
+          <p><strong>The situation:</strong> Inherited an environment with one Mac and a handful of old Apple policies in Intune, but nothing was actually in use. The pieces were there, but none of it was set up in a way that would scale or hold up to a second device, let alone a fleet.</p>
+
+          <p style="margin-top:10px"><strong>The call I made:</strong> Rather than try to patch what was there, I scrapped it and rebuilt the setup from the ground up. It was faster, cleaner, and gave me a foundation I could actually trust as more Macs got added.</p>
+
+          <p style="margin-top:10px"><strong>What I built:</strong></p>
+          <ul style="margin: 6px 0 0 22px; line-height: 1.6;">
+            <li>Recovered Apple Business Manager access and reconnected it to Intune</li>
+            <li>Configured Automated Device Enrollment so new Macs auto-enroll when they connect to Wi-Fi</li>
+            <li>Set up SSO through Microsoft Entra via Company Portal so users authenticate with their company identity</li>
+            <li>Wrote configuration profiles and compliance policies sized to a small but growing Mac footprint</li>
+          </ul>
+
+          <p style="margin-top:10px"><strong>How onboarding works now:</strong> When a new Mac powers on, it auto-enrolls into Intune through ABM. I use LAPS to provision a local account with a temporary password and hand that off to the user. They sign in once, open Company Portal, and authenticate with their Entra SSO credentials. From there, their Mac is tied to their company identity and they're ready to work.</p>
+
+          <p style="margin-top:10px"><strong>Where it stands:</strong> The Mac footprint is up to 2 devices, both managed end-to-end through Intune with Entra SSO. The flow is repeatable, documented, and ready to scale.</p>
+
+          <p style="margin-top:10px"><strong>What's next:</strong> I'm researching Platform SSO with the new "Enable Registration During Setup" toggle (released in Intune in May 2026) to compress the initial local-account handoff into something even smoother. The goal is zero-touch from box to desktop.</p>
+
+          <div style="background:#ffffcc; border:1px solid #808080; padding:8px 10px; margin-top:12px; font-size:11px;">
+            <strong>Tech used:</strong> Apple Business Manager, Microsoft Intune, Microsoft Entra ID, Company Portal, Automated Device Enrollment, LAPS, macOS configuration profiles
+          </div>
+
+        </div>
+      </div>
+
       <!-- Placeholder cards -->
       
       <div style="text-align:center; margin-top:16px; position:relative;">
