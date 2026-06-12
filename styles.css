@@ -660,15 +660,74 @@ body {
 /* =====================================================
    CONTACT PAGE
    ===================================================== */
-.win-contact-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 16px;
+#contact-popups {
+  position: fixed;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 160;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
 }
 
-@media (max-width: 560px) {
-  .win-contact-grid { grid-template-columns: 1fr; }
+#contact-popups .win-popup {
+  width: 270px;
+  margin: 0 8px;
+  pointer-events: auto;
+  opacity: 0;
+}
+
+#contact-popups .win-popup:nth-child(1) {
+  z-index: 1;
+  animation: popupIn1 0.4s ease-out 0.2s forwards;
+}
+
+#contact-popups .win-popup:nth-child(2) {
+  z-index: 3;
+  animation: popupIn2 0.4s ease-out 0.45s forwards;
+}
+
+#contact-popups .win-popup:nth-child(3) {
+  z-index: 2;
+  animation: popupIn3 0.4s ease-out 0.7s forwards;
+}
+
+@keyframes popupIn1 {
+  from { opacity: 0; transform: translateY(18px) rotate(-1.5deg) scale(0.8); }
+  60%  { opacity: 1; transform: translateY(14px) rotate(-1.5deg) scale(1.03); }
+  to   { opacity: 1; transform: translateY(18px) rotate(-1.5deg) scale(1); }
+}
+
+@keyframes popupIn2 {
+  from { opacity: 0; transform: translateY(-14px) rotate(1deg) scale(0.8); }
+  60%  { opacity: 1; transform: translateY(-18px) rotate(1deg) scale(1.03); }
+  to   { opacity: 1; transform: translateY(-14px) rotate(1deg) scale(1); }
+}
+
+@keyframes popupIn3 {
+  from { opacity: 0; transform: translateY(24px) rotate(-1deg) scale(0.8); }
+  60%  { opacity: 1; transform: translateY(20px) rotate(-1deg) scale(1.03); }
+  to   { opacity: 1; transform: translateY(24px) rotate(-1deg) scale(1); }
+}
+
+@media (max-width: 600px) {
+  #contact-popups {
+    position: static;
+    transform: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 18px auto 0;
+    pointer-events: auto;
+  }
+  #contact-popups .win-popup {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 0 14px;
+    opacity: 1;
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
 .win-dialog-box {
@@ -678,6 +737,72 @@ body {
   border-right: 2px solid #808080;
   border-bottom: 2px solid #808080;
 }
+
+.win-contact-list {
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+
+.win-popup {
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  box-shadow: 2px 2px 0 #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.win-popup-titlebar {
+  background: linear-gradient(to right, #808080, #b5b5b5);
+  color: #d8d8d8;
+  padding: 3px 4px 3px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* Focused window: bright blue title bar, like the active window in Win98 */
+#contact-popups .win-popup.popup-focused .win-popup-titlebar {
+  background: linear-gradient(to right, #000080, #1084d0);
+  color: white;
+}
+
+/* Focused window jumps to the front so its close button is never buried */
+#contact-popups .win-popup.popup-focused {
+  z-index: 10;
+}
+
+.win-popup-titlebar .win-ctrl-btn {
+  cursor: default;
+}
+
+.win-popup-body {
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.win-popup-body p {
+  font-size: 11px;
+  color: #444;
+  word-break: break-all;
+  margin: 0;
+}
+
+.win-popup-body .win-btn {
+  align-self: flex-start;
+}
+
+
+
 
 .win-dialog-titlebar {
   background: #000080;

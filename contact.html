@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4KJDZZNSQN"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4KJDZZNSQN');
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Alexis Sloan</title>
@@ -94,35 +86,6 @@
         <p>Feel free to reach out with any questions or opportunities! I'm always open to new collaborations. Don't hesitate to reach out!</p>
       </div>
 
-      <!-- Contact options as dialog boxes -->
-      <div class="win-contact-grid">
-
-        <div class="win-dialog-box">
-          <div class="win-dialog-titlebar">&#128140; Email Me</div>
-          <div class="win-dialog-body">
-            <p>hello@alexissloan.com</p>
-            <a href="mailto:hello@alexissloan.com" class="win-btn" style="margin-top:10px; display:inline-block">Open Email</a>
-          </div>
-        </div>
-
-        <div class="win-dialog-box">
-          <div class="win-dialog-titlebar">&#128279; LinkedIn</div>
-          <div class="win-dialog-body">
-            <p>linkedin.com/in/a-sloan/</p>
-            <a href="https://www.linkedin.com/in/a-sloan/" target="_blank" class="win-btn" style="margin-top:10px; display:inline-block">View Profile</a>
-          </div>
-        </div>
-
-        <div class="win-dialog-box">
-          <div class="win-dialog-titlebar">&#128196; Resume</div>
-          <div class="win-dialog-body">
-            <p>Download my full resume as a PDF.</p>
-            <a href="resume.pdf" download="Alexis_Resume.pdf" class="win-btn" style="margin-top:10px; display:inline-block">&#128229; Download</a>
-          </div>
-        </div>
-
-      </div>
-
       <!-- Fun Win98-style dialog -->
       <div class="win-alert-box">
         <div class="win-alert-icon">&#128161;</div>
@@ -139,6 +102,43 @@
       <span class="win-status-panel">&#127968; alexissloan.com</span>
       <span class="win-status-panel" id="win-clock">12:00 PM</span>
     </div>
+  </div>
+
+  <div class="win-contact-grid" id="contact-popups">
+
+    <div class="win-popup">
+      <div class="win-popup-titlebar">
+        <span>&#128140; Email Me</span>
+        <button class="win-ctrl-btn" title="Close" tabindex="-1">&#10005;</button>
+      </div>
+      <div class="win-popup-body">
+        <p>hello@alexissloan.com</p>
+        <a href="mailto:hello@alexissloan.com" class="win-btn">Open Email</a>
+      </div>
+    </div>
+
+    <div class="win-popup">
+      <div class="win-popup-titlebar">
+        <span>&#128279; LinkedIn</span>
+        <button class="win-ctrl-btn" title="Close" tabindex="-1">&#10005;</button>
+      </div>
+      <div class="win-popup-body">
+        <p>linkedin.com/in/a-sloan/</p>
+        <a href="https://www.linkedin.com/in/a-sloan/" target="_blank" class="win-btn">View Profile</a>
+      </div>
+    </div>
+
+    <div class="win-popup">
+      <div class="win-popup-titlebar">
+        <span>&#128196; Resume</span>
+        <button class="win-ctrl-btn" title="Close" tabindex="-1">&#10005;</button>
+      </div>
+      <div class="win-popup-body">
+        <p>Download my full resume as a PDF.</p>
+        <a href="resume.pdf" download="Alexis_Resume.pdf" class="win-btn">&#128229; Download</a>
+      </div>
+    </div>
+
   </div>
 
   <div class="taskbar-float" id="taskbar-float" style="display:none">
@@ -179,5 +179,27 @@
 </div>
 
 <script src="win98.js"></script>
+<script>
+/* Contact popup focus: only one window is "active" (blue) at a time,
+   matching real Win98 window focus behavior. */
+(function () {
+  var popups = document.querySelectorAll('#contact-popups .win-popup');
+  if (!popups.length) return;
+
+  function focusPopup(target) {
+    popups.forEach(function (p) {
+      p.classList.toggle('popup-focused', p === target);
+    });
+  }
+
+  popups.forEach(function (p) {
+    p.addEventListener('mouseenter', function () { focusPopup(p); });
+    p.addEventListener('mousedown', function () { focusPopup(p); });
+  });
+
+  /* Start with the middle window focused, matching the cascade layout. */
+  focusPopup(popups[1] || popups[0]);
+})();
+</script>
 </body>
 </html>
